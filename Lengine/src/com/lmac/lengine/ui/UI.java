@@ -1,5 +1,13 @@
 package com.lmac.lengine.ui;
 
-public class UI {
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 
+public interface UI {
+
+	public abstract void update(GameContainer gc);
+	public abstract void render(Graphics g);
+	public abstract void init();
+	
+	
 }

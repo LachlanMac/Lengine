@@ -1,11 +1,10 @@
 package com.lmac.lengine.main;
 
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.lmac.lengine.states.MenuState;
+import com.lmac.lengine.states.*;
 
 
 public class Lengine extends StateBasedGame {
@@ -17,7 +16,7 @@ public class Lengine extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		this.addState(new MenuState());
+		this.addState(new GameState());
 	}
 
 }

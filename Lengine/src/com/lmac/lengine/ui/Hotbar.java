@@ -13,16 +13,17 @@ import com.lmac.lengine.utils.Log;
 public class Hotbar {
 	int highlightedSkill = 0;
 	private ArrayList<SkillButton> skills;
+	private GameContainer input;
 	LMouseListener l;
 
 	public Hotbar(GameContainer input) {
+		this.input = input;
 		skills = new ArrayList<SkillButton>(8);
 		init();
 
 		l = new LMouseListener() {
 			@Override
 			public void mouseWheelMoved(int delta) {
-				Log.print("ADDING MOUSE LISTSENER");
 				if (delta < 0) {
 					if (highlightedSkill == 1) {
 						highlightedSkill = 8;
@@ -41,7 +42,6 @@ public class Hotbar {
 					}
 
 				}
-				Log.print("" + highlightedSkill);
 			}
 		};
 
@@ -49,10 +49,10 @@ public class Hotbar {
 
 	}
 
-	public void update(GameContainer gc, Rectangle cursor) {
+	public void update(Rectangle cursor) {
 
 		for (int i = 0; i < skills.size(); i++) {
-			skills.get(i).update(gc, cursor);
+			skills.get(i).update(input, cursor);
 			
 		}
 		highlightSkill();

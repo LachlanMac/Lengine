@@ -31,6 +31,7 @@ public class SkillButton extends LButton {
 			g.setColor(Color.blue);
 			g.draw(highlight);
 		}
+		g.drawString(Integer.toString(button), (bounds.getX() + bounds.getWidth()) - 12, (bounds.getY() + bounds.getHeight()) -16 );
 	}
 
 	@Override
