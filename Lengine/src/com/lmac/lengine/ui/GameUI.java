@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 
+import com.lmac.lengine.skills.*;
 import com.lmac.lengine.utils.Log;
 
 public class GameUI implements UI {
@@ -33,6 +34,8 @@ public class GameUI implements UI {
 	@Override
 	public void init() {
 		hotbar = new Hotbar(input);
+		hotbar.addSkill(new Punch(), 1);
+		hotbar.addSkill(new FireNova(), 2);
 		
 	}
 	

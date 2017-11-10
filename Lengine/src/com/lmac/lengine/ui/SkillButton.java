@@ -3,12 +3,14 @@ package com.lmac.lengine.ui;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Rectangle;
 import com.lmac.lengine.skills.Skill;
 
 
 public class SkillButton extends LButton {
 	boolean highlighted = false;
+	Image icon;
 	Skill skill = null;
 	int button;
 	Rectangle highlight;
@@ -17,12 +19,16 @@ public class SkillButton extends LButton {
 		highlight = bounds;
 		this.skill = skill;
 		this.button = button;
+		if(skill != null){
+			icon = skill.getImage();
+		}
 	}
 
 	
 	public void render(Graphics g) {
 		if (skill != null) {
 			g.setColor(Color.pink);
+			icon.draw(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight());
 		} else {
 			g.setColor(Color.white);
 		}
@@ -31,6 +37,7 @@ public class SkillButton extends LButton {
 			g.setColor(Color.blue);
 			g.draw(highlight);
 		}
+		g.setColor(Color.black);
 		g.drawString(Integer.toString(button), (bounds.getX() + bounds.getWidth()) - 12, (bounds.getY() + bounds.getHeight()) -16 );
 	}
 
@@ -44,6 +51,7 @@ public class SkillButton extends LButton {
 	
 	public void setSkill(Skill skill){
 		this.skill = skill;
+		icon = skill.getImage();
 	}
 
 
