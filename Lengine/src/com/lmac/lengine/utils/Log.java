@@ -12,4 +12,9 @@ public class Log {
 		System.out.println("LOG: " + str);
 	}
 	
+	public static void error(String str){
+		System.out.println("ERROR: " + str);
+		
+	}
+	
 }

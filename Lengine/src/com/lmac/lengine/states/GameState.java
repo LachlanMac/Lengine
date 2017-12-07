@@ -6,16 +6,24 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.lmac.lengine.net.Connection;
+import com.lmac.lengine.net.LoginConnection;
 import com.lmac.lengine.ui.GameUI;
 
 public class GameState extends BasicGameState {
 	
 	GameUI gui;
-	
+	Connection conn = null;
+	LoginConnection lc;
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		gui = new GameUI(gc);
 		
+		
+		conn = new Connection();
+		
+		lc = new LoginConnection(conn);
+		lc.login("Drahkon", "Movingon1");
 	}
 
 	@Override
