@@ -35,6 +35,8 @@ public class Connection  {
 	}
 	
 	
+	
+	
 	public boolean isConnected(){
 		return isConnected;
 	}

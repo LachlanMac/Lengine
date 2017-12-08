@@ -17,6 +17,8 @@ public class GameState extends BasicGameState {
 	LoginConnection lc;
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
+		
+		
 		gui = new GameUI(gc);
 		
 		

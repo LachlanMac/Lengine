@@ -6,6 +6,7 @@ import org.newdawn.slick.geom.Shape;
 
 public class MenuButton extends LButton{
 
+	
 	public MenuButton(int xLoc, int yLoc, int height, int width) {
 		super(xLoc, yLoc, height, width);
 		
@@ -13,7 +14,11 @@ public class MenuButton extends LButton{
 
 	@Override
 	public void update(GameContainer gc, Rectangle cursor) {
-		// TODO Auto-generated method stub
+		if (this.getBounds().intersects(cursor)) {
+			if (gc.getInput().isMousePressed(0)) {
+				action();
+			}
+		}
 		
 	}
 

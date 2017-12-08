@@ -11,6 +11,7 @@ public class GameUI implements UI {
 	
 	Hotbar hotbar;
 	GameContainer input;
+
 	
 	public GameUI(GameContainer gc){
 		this.input = gc;

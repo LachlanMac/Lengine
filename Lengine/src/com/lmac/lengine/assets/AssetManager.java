@@ -2,14 +2,22 @@ package com.lmac.lengine.assets;
 
 public class AssetManager {
 	
-	TextureLoader tl;
+	TextureLoader tL;
+	UILoader uiL;
+	
 	public AssetManager() {
-		tl = new TextureLoader();
+		tL = new TextureLoader();
+		uiL = new UILoader();
+		
+		
 		init();
+		
+		
 	}
 	
 	public void init(){
-		tl.init();
+		tL.init();
+		uiL.init();
 	}
 	
 	
