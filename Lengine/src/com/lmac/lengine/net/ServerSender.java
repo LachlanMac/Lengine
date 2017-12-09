@@ -6,12 +6,15 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.lmac.lengine.utils.Log;
+
 public class ServerSender extends Thread {
 
-	private Queue<Packet> sendQueue;
+	private LinkedBlockingQueue<Packet> sendQueue;
 	private int port;
 	private DatagramSocket socket = null;
 	private InetAddress address;
@@ -22,16 +25,16 @@ public class ServerSender extends Thread {
 		this.socket = conn.getSocket();
 		this.port = conn.getPort();
 		this.address = conn.getAddress();
-		this.sendQueue = new LinkedList<Packet>();
+		this.sendQueue = new LinkedBlockingQueue<Packet>();
 	}
 
 	@Override
 	public void run() {
 
 		while (true) {
-
-			if (sendQueue.size() > 0) {
-
+		
+			if (sendQueue.size() != 0) {
+			
 				DatagramPacket out = sendQueue.poll().getPacket();
 				
 				try {
@@ -49,7 +52,7 @@ public class ServerSender extends Thread {
 	}
 
 	public void addPacket(Packet p) {
-
+		
 		sendQueue.add(p);
 
 	}

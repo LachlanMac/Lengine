@@ -30,9 +30,6 @@ public class ServerReceiver extends Thread {
 	public void run(){
 		
 		
-		
-		
-		
 	}
 	
 	

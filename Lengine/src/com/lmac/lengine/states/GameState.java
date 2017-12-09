@@ -47,15 +47,7 @@ public class GameState extends BasicGameState {
 			
 			sender.start();
 			
-			
-			//receiver.sendTest();
-			
-			byte[] hi = "HELLO".getBytes();
-			
-			sender.addPacket(new MovePacket(hi));
-		
-			
-			p = new Player(200,300);
+			p = new Player(200,300, gc, sender, receiver, 23);
 			
 			
 			

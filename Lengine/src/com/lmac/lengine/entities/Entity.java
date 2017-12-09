@@ -2,6 +2,8 @@ package com.lmac.lengine.entities;
 
 import org.newdawn.slick.Graphics;
 
+
+
 public abstract class Entity {
 
 	protected float x, y;
