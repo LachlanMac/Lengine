@@ -5,6 +5,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.gui.TextField;
+import org.newdawn.slick.state.StateBasedGame;
 
 import com.lmac.lengine.assets.UILoader;
 import com.lmac.lengine.config.Options;
@@ -18,11 +19,12 @@ public class MenuUI implements UI {
 	TextField userField, passwordField;
 	MenuButton login;
 	InputField userName, password;
-	
-	public MenuUI(GameContainer gc) {
+	StateBasedGame game;
+	public MenuUI(GameContainer gc, StateBasedGame game) {
 		this.input = gc;
 		userName = new InputField(300, 300, 200, 40, gc, UILoader.menuFont);
 		password = new InputField(300, 360, 200, 40, gc, UILoader.menuFont);
+		this.game = game;
 		init();
 		
 	}
@@ -64,7 +66,7 @@ public class MenuUI implements UI {
 				Log.print(password.getText().trim());
 				String usr = userName.getText().trim();
 				String pwd = password.getText().trim();
-				LoginConnection lc = new LoginConnection(MenuState.conn);
+				LoginConnection lc = new LoginConnection(MenuState.loginConn, game);
 				lc.login(usr, pwd, 1);
 			}
 

@@ -8,7 +8,10 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import org.newdawn.slick.state.StateBasedGame;
+
 import com.lmac.lengine.config.Options;
+import com.lmac.lengine.states.GameState;
 import com.lmac.lengine.utils.Log;
 
 public class LoginConnection {
@@ -20,13 +23,14 @@ public class LoginConnection {
 	private int packetSize;
 	private final String HAND_SHAKE = "handshake";
 	private boolean loginStatus = false;
-
-	public LoginConnection(Connection conn) {
+	private StateBasedGame game;
+	
+	public LoginConnection(Connection conn, StateBasedGame game) {
 		this.socket = conn.getSocket();
 		this.port = conn.getPort();
 		this.address = conn.getAddress();
 		this.packetSize = Options.LOGIN_PACKET_SIZE;
-
+		this.game = game;
 	}
 
 	public void login(String username, String password, int charID) {
@@ -48,6 +52,10 @@ public class LoginConnection {
 			if (confirmation.trim().equals("confirmed")) {
 				Log.print("Login : confirmed");
 				loginStatus = true;
+				
+				game.enterState(1);
+		
+				
 			} else if (confirmation.trim().equals("denied")) {
 				
 				loginStatus = false;

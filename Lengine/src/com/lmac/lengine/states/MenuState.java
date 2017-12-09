@@ -1,6 +1,9 @@
 package com.lmac.lengine.states;
 
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -12,6 +15,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import com.lmac.lengine.assets.AssetManager;
 import com.lmac.lengine.assets.UILoader;
+import com.lmac.lengine.config.Options;
+import com.lmac.lengine.main.Lengine;
 import com.lmac.lengine.net.Connection;
 import com.lmac.lengine.net.LoginConnection;
 import com.lmac.lengine.skills.*;
@@ -21,22 +26,30 @@ import com.lmac.lengine.utils.Log;
 
 public class MenuState extends BasicGameState {
 	
-	
+
 	AssetManager am;
 	MenuUI ui;
-	public static Connection conn = null;
-		
+	public static Connection loginConn, serverConn;
+	public LoginConnection lc;
 	
 	
 	@Override
-	public void init(GameContainer gc, StateBasedGame arg1) throws SlickException {
+	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		am = new AssetManager();
-		ui = new MenuUI(gc);
-		
+		ui = new MenuUI(gc, game);
+	
 		am.init();
 		ui.init();
 		
-		conn = new Connection();
+	
+		try {
+			loginConn = new Connection(InetAddress.getByName(Options.serverAddress), Options.loginServerPort);
+		
+			Log.print("Creating Login Connection");
+			
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 		
 		
 		

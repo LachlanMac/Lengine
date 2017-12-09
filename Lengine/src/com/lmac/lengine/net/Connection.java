@@ -17,17 +17,14 @@ public class Connection  {
 	int serverPort;
 	
 	
-	public Connection(){
+	public Connection(InetAddress address, int port){
 		try {
 			socket = new DatagramSocket();
-			serverAddress = InetAddress.getByName(Options.serverAddress);
-			serverPort = Options.serverPort;
+			serverAddress = address;
+			serverPort = port;
 			
 		} catch (SocketException e) {
 			Log.error("Could not create client connection");
-			e.printStackTrace();
-		} catch (UnknownHostException e) {
-			Log.error("Unknown Host");
 			e.printStackTrace();
 		}
 		

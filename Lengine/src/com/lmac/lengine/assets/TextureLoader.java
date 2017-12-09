@@ -16,10 +16,41 @@ public class TextureLoader extends AssetLoader {
 	private final int ID = 1;
 	
 	
+	
+	public static Image player;
+	
+	
+	
 	private static HashMap<Integer, Image> skillGraphicMap = new HashMap<Integer, Image>();
 	@Override
 	public void init() {
 		loadSkillMap();
+		
+		
+		try {
+			player = new Image("res/textures/player.png");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
