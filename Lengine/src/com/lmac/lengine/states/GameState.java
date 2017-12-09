@@ -25,7 +25,7 @@ public class GameState extends BasicGameState {
 		conn = new Connection();
 		
 		lc = new LoginConnection(conn);
-		lc.login("Drahkon", "Movingon1");
+		//lc.login("Drahkon", "Movingon1");
 	}
 
 	@Override

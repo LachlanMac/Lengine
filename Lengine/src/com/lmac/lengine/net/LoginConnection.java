@@ -26,28 +26,36 @@ public class LoginConnection {
 		this.port = conn.getPort();
 		this.address = conn.getAddress();
 		this.packetSize = Options.LOGIN_PACKET_SIZE;
-		
+
 	}
 
-	public void login(String username, String password) {
+	public void login(String username, String password, int charID) {
 		inData = new byte[packetSize];
 		outData = new byte[packetSize];
 
-		outData = new String(HAND_SHAKE + "-" + username + "-" + password).getBytes();
+		outData = new String(HAND_SHAKE + "-" + username + "-" + password + "-" + charID).getBytes();
 		DatagramPacket outPacket = new DatagramPacket(outData, outData.length, address, port);
 		DatagramPacket inPacket = new DatagramPacket(inData, inData.length);
 		try {
 
 			socket.send(outPacket);
 			socket.setSoTimeout(5000);
+			Log.print("Waiting to receive on Client");
 			socket.receive(inPacket);
-
+				
 			String confirmation = new String(inPacket.getData());
-
+			Log.print("Received : " + confirmation);	
 			if (confirmation.trim().equals("confirmed")) {
-				Log.print("confirmed");
+				Log.print("Login : confirmed");
 				loginStatus = true;
-			}else{
+			} else if (confirmation.trim().equals("denied")) {
+				
+				loginStatus = false;
+				Log.print("Login : denied");
+				
+			}
+			else {
+				Log.print("YOU SUCK");
 				loginStatus = false;
 			}
 
@@ -65,12 +73,9 @@ public class LoginConnection {
 
 	}
 
-
 	public boolean getLoginStatus() {
 		return loginStatus;
 
 	}
-
-	
 
 }

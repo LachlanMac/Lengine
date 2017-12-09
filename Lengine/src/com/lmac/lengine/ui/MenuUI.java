@@ -65,7 +65,7 @@ public class MenuUI implements UI {
 				String usr = userName.getText().trim();
 				String pwd = password.getText().trim();
 				LoginConnection lc = new LoginConnection(MenuState.conn);
-				lc.login(usr, pwd);
+				lc.login(usr, pwd, 1);
 			}
 
 		};
