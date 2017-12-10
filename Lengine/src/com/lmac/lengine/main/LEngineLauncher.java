@@ -3,7 +3,7 @@ package com.lmac.lengine.main;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-public class Launcher {
+public class LEngineLauncher {
 
 	
 	public static void main(String[] args){
@@ -15,6 +15,8 @@ public class Launcher {
 			game.setTargetFrameRate(60);
 			game.setMaximumLogicUpdateInterval(60);
 			game.setVSync(true);
+			game.setUpdateOnlyWhenVisible(false);
+			game.setAlwaysRender(true);
 			// start game
 			game.start();
 		} catch (SlickException e) {

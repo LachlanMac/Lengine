@@ -33,6 +33,10 @@ public class MenuState extends BasicGameState {
 	public LoginConnection lc;
 	
 	
+	public MenuState(Connection conn){
+		serverConn = conn;
+	}
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		am = new AssetManager();

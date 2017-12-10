@@ -7,7 +7,6 @@ public class MovePacket extends Packet{
 	private byte[] moveData;
 	
 	public MovePacket(byte[] moveData){
-		
 		this.moveData = moveData;
 		
 	}

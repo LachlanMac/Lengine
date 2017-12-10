@@ -80,11 +80,14 @@ public class Player extends Entity {
 		
 		loc.set(loc.getX() + v.getX(), loc.getY() + v.getY());
 		
-		String moveP = "05-" + playerID + "-" + loc.getX() + "-" + loc.getY();
+		String moveP = "05=" + playerID + "=" + loc.getX() + "=" + loc.getY();
+		pOut.addPacket(new MovePacket( moveP.getBytes()));
 		
-		pOut.addPacket(new MovePacket(moveP.getBytes()));
 		
-		
+	}
+	
+	public int getPlayerID(){
+		return playerID;
 	}
 
 }

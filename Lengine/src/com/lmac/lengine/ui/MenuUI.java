@@ -18,12 +18,14 @@ public class MenuUI implements UI {
 	GameContainer input;
 	TextField userField, passwordField;
 	MenuButton login;
-	InputField userName, password;
+	InputField userName, password, charID;
+	
 	StateBasedGame game;
 	public MenuUI(GameContainer gc, StateBasedGame game) {
 		this.input = gc;
-		userName = new InputField(300, 300, 200, 40, gc, UILoader.menuFont);
-		password = new InputField(300, 360, 200, 40, gc, UILoader.menuFont);
+		userName = new InputField(400, 300, 200, 40, gc, UILoader.menuFont);
+		password = new InputField(400, 360, 200, 40, gc, UILoader.menuFont);
+		charID = new InputField(620, 300, 50, 40, gc, UILoader.menuFont);
 		this.game = game;
 		init();
 		
@@ -31,10 +33,7 @@ public class MenuUI implements UI {
 
 	public void init() {
 		configureButtons();
-		
-		
 	
-		
 	}
 
 	@Override
@@ -43,22 +42,26 @@ public class MenuUI implements UI {
 		login.update(gc, cursor);
 		userName.update(gc, cursor);
 		password.update(gc, cursor);
-
+		charID.update(gc, cursor);
 	}
 
 	@Override
 	public void render(Graphics g) {
+		g.setFont(UILoader.menuFont.getFont());
 		login.render(g);
+		g.drawString("Username", 250, 305);
+		g.drawString("Password", 250, 365);
+		
 		userName.render(g);
 		password.render(g);
-		
+		charID.render(g);
 		
 		
 
 	}
 	
 	public void configureButtons() {
-		login = new MenuButton(300, 400, 200, 200) {
+		login = new MenuButton(400, 450, 200, 50) {
 			@Override
 			public void action() {
 				
@@ -66,11 +69,17 @@ public class MenuUI implements UI {
 				Log.print(password.getText().trim());
 				String usr = userName.getText().trim();
 				String pwd = password.getText().trim();
-				LoginConnection lc = new LoginConnection(MenuState.loginConn, game);
-				lc.login(usr, pwd, 1);
+				String cID = charID.getText().trim();
+				int char_ID = Integer.parseInt(cID);
+				
+				Options.playerID = char_ID;
+				LoginConnection lc = new LoginConnection(MenuState.serverConn, game);
+				lc.login(usr, pwd, char_ID);
 			}
 
 		};
+		
+		login.setText("Login");
 		
 	}
 

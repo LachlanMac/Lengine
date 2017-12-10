@@ -8,11 +8,14 @@ import com.lmac.lengine.utils.Log;
 
 public abstract class LButton {
 	private int xPad = 0, yPad = 0;
-	private int xLoc, yLoc, height, width;
+	protected int xLoc;
+	protected int yLoc;
+	protected int height;
+	protected int width;
 	protected Rectangle bounds;
 	private boolean drawBounds = true;
 
-	public LButton(int xLoc, int yLoc, int height, int width) {
+	public LButton(int xLoc, int yLoc, int width, int height) {
 		this.xLoc = xLoc;
 		this.yLoc = yLoc;
 		this.height = height;

@@ -10,13 +10,16 @@ public abstract class Packet {
 
 	protected InetAddress destinationAddress;
 	protected int destinationPort = Options.gameServerPort;
-
+	protected int playerID;
+	
 	public Packet() {
-
+		
 	}
 
 	public abstract DatagramPacket getPacket();
 
+	
+	
 	public InetAddress getDestinationAddress() {
 
 		try {

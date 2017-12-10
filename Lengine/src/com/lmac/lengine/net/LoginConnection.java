@@ -37,7 +37,7 @@ public class LoginConnection {
 		inData = new byte[packetSize];
 		outData = new byte[packetSize];
 
-		outData = new String(HAND_SHAKE + "-" + username + "-" + password + "-" + charID).getBytes();
+		outData = new String("01" + "-" + username + "-" + password + "-" + charID).getBytes();
 		DatagramPacket outPacket = new DatagramPacket(outData, outData.length, address, port);
 		DatagramPacket inPacket = new DatagramPacket(inData, inData.length);
 		try {
@@ -46,13 +46,13 @@ public class LoginConnection {
 			socket.setSoTimeout(5000);
 			Log.print("Waiting to receive on Client");
 			socket.receive(inPacket);
-				
+			socket.setSoTimeout(0);
 			String confirmation = new String(inPacket.getData());
 			Log.print("Received : " + confirmation);	
 			if (confirmation.trim().equals("confirmed")) {
 				Log.print("Login : confirmed");
 				loginStatus = true;
-				
+				Options.init(charID);
 				game.enterState(1);
 		
 				
