@@ -10,6 +10,7 @@ public class Options {
 	public static int gameServerPort = 3356;
 	public static String serverAddress = "localhost";
 	public static int playerID = 0;
+	public static String playerName = "default";
 
 	//PACKET VARIABLES
 	public static final int LOGIN_PACKET_SIZE = 128;
@@ -33,5 +34,6 @@ public class Options {
 		playerID = id;
 		
 	}
+	
 	
 }
