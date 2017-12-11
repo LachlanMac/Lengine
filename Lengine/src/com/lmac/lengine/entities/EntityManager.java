@@ -118,4 +118,7 @@ public class EntityManager {
 		return p;
 	}
 
+	public Vector<PlayerMP> getPlayerList() {
+		return playerList;
+	}
 }

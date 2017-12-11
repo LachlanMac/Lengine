@@ -8,7 +8,9 @@ import com.lmac.lengine.utils.Log;
 public class PacketReader {
 
 	EntityManager em;
-
+	
+	
+	
 	public PacketReader(EntityManager em) {
 
 		this.em = em;
@@ -49,6 +51,8 @@ public class PacketReader {
 	public void parseMPConnection(String packetData) {
 
 		String[] data = packetData.split("=");
+		
+		
 		int playerID = Integer.parseInt(data[1]);
 
 		if (playerID == Options.playerID) {
@@ -85,7 +89,7 @@ public class PacketReader {
 		String name = data[2];
 		Log.print("Added : ID[" + playerID + "]   at " + name);
 
-		em.addMPPlayer(new PlayerMP(0, 0, playerID, name));
+		//em.addMPPlayer(new PlayerMP(0, 0, playerID, name, zone));
 
 	}
 

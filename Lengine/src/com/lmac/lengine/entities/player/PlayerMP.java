@@ -11,14 +11,18 @@ import com.lmac.lengine.utils.Log;
 
 public class PlayerMP extends Entity {
 
-	String playerName;
+	private String playerName;
 	private int playerID;
-	Vector2f loc;
-
-	public PlayerMP(float x, float y, int playerID, String playerName) {
+	private Vector2f loc;
+	private int zone;
+	private float velocity;
+	
+	public PlayerMP(float x, float y, int playerID, String playerName, int zone) {
 		super(x, y);
+		this.zone = zone;
 		loc = new Vector2f(x, y);
 		this.playerName = playerName;
+		this.velocity = 0;
 	}
 
 	public PlayerMP(int playerID) {
@@ -40,10 +44,18 @@ public class PlayerMP extends Entity {
 	public int getPlayerID() {
 		return playerID;
 	}
-
-	public void move(float newX, float newY) {
-
-		loc.set(newX, newY);
-
+	
+	
+	public float getVelocity() {
+		return velocity;
 	}
+	public void setVelocity(float v) {
+		this.velocity = v;
+	}
+	
+	public void move(float newX, float newY) {
+		loc.set(newX, newY);
+	}
+	
+	
 }
